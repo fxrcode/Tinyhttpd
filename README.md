@@ -1,6 +1,12 @@
 A mirror for tinyhttpd(Tinyhttpd非官方镜像,Fork自[sourceForge](https://sourceforge.net/projects/tiny-httpd/),仅供学习)
 
 测试CGI时需要本机安装PERL，同时安装perl-cgi
+## Play
+* check [phenix3443: TinyHTTPd 源码分析](https://phenix3443.github.io/notebook/c/tinyhttpd-analysis.html)
+* To test, follow `Prepare` to edit httpd.c so as to `make all`.
+* Then goto folder: `htdocs`, change permission of cgi files: `chmod +x *.cgi`
+  * ![](images/httpd-1.png)
+  * ![](images/httpd-2.png)
 
 ### Prepare 
 Compile for Linux
