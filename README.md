@@ -7,6 +7,9 @@ A mirror for tinyhttpd(Tinyhttpd非官方镜像,Fork自[sourceForge](https://sou
 * Then goto folder: `htdocs`, change permission of cgi files: `chmod +x *.cgi`
   * ![](images/httpd-1.png)
   * ![](images/httpd-2.png)
+* ref
+  * https://github.com/forthespada/MyPoorWebServer
+  * https://github.com/nengm/Tinyhttpd
 
 ### Prepare 
 Compile for Linux
