@@ -47,7 +47,7 @@ void cannot_execute(int);
 //错误输出
 void error_die(const char *);
 
-//执行cig脚本
+//执行 CGI 脚本
 void execute_cgi(int, const char *, const char *, const char *);
 
 //得到一行数据,只要发现c为\n,就认为是一行结束，如果读到\r,再用MSG_PEEK的方式读入一个字符，如果是\n，从socket用读出
@@ -202,12 +202,16 @@ void accept_request(void *arg)
             (st.st_mode & S_IXGRP) ||
             (st.st_mode & S_IXOTH))
             cgi = 1;
-        if (!cgi)
+        if (!cgi) {
             //接读取文件返回给请求的http客户端
             serve_file(client, path);
-        else
+            printf("not cgi, serve_file: %s\n", path);
+        }
+        else {
             //执行cgi文件
             execute_cgi(client, path, method, query_string);
+            printf("execute_cgi: path [%s], method [%s], query_string [%s]\n", path, method, query_string);
+        }
     }
     //执行完毕关闭socket
     close(client);
@@ -381,7 +385,7 @@ void execute_cgi(int client, const char *path,
         char query_env[255];
         char length_env[255];
 
-        //子进程输出重定向到output管道的1端
+        //子进程输出重定向到output管道的1端. pipe[0]=read pipe, pipe[1]=write pipe
         dup2(cgi_output[1], 1);
         //子进程输入重定向到input管道的0端
         dup2(cgi_input[0], 0);
@@ -649,9 +653,10 @@ int main(void)
     pthread_t newthread;
 
     server_sock = startup(&port);
-    printf("httpd running on port %d\n", port);
+	 printf("http server_sock is %d\n", server_sock);
+	 printf("http running on port %d\n", port);
 
-    while (1)
+    for (;;)
     {
         //接受请求，函数原型
         //#include <sys/types.h>
@@ -662,6 +667,8 @@ int main(void)
                              &client_name_len);
         if (client_sock == -1)
             error_die("accept");
+        printf("New connection....  ip: %s , port: %d\n",inet_ntoa(client_name.sin_addr),ntohs(client_name.sin_port));
+
         /* accept_request(client_sock); */
 
         //每次收到请求，创建一个线程来处理接受到的请求

@@ -4,12 +4,35 @@ A mirror for tinyhttpd(Tinyhttpd非官方镜像,Fork自[sourceForge](https://sou
 ## Play
 * check [phenix3443: TinyHTTPd 源码分析](https://phenix3443.github.io/notebook/c/tinyhttpd-analysis.html)
 * To test, follow `Prepare` to edit httpd.c so as to `make all`.
-* Then goto folder: `htdocs`, change permission of cgi files: `chmod +x *.cgi`
+* Then goto folder: `htdocs`, change permission of cgi files: `chmod +x *.cgi`, `chmod 600 *.html`.
   * ![](images/httpd-1.png)
   * ![](images/httpd-2.png)
+  * ![](images/register-req.png)
+  * ![](images/register-resp.png)
+* logs
+```
+# fxrc @ popos in ~/SourceCode/Tinyhttpd on git:main x [17:20:54]
+$ ./httpd
+http server_sock is 3
+http running on port 4000
+New connection....  ip: 127.0.0.1 , port: 55716
+not cgi, serve_file: htdocs/index.html
+New connection....  ip: 127.0.0.1 , port: 55722
+not cgi, serve_file: htdocs/register.html
+New connection....  ip: 127.0.0.1 , port: 55732
+not cgi, serve_file: htdocs/register.html
+New connection....  ip: 127.0.0.1 , port: 55742
+execute_cgi: path [htdocs/register.cgi], method [POST], query_string [(null)]
+New connection....  ip: 127.0.0.1 , port: 55754
+execute_cgi: path [htdocs/register.cgi], method [POST], query_string [(null)]
+New connection....  ip: 127.0.0.1 , port: 55758
+not cgi, serve_file: htdocs/register.html
+```
+
 * ref
   * https://github.com/forthespada/MyPoorWebServer
   * https://github.com/nengm/Tinyhttpd
+  * https://www.cnblogs.com/qiyeboy/p/6296387.html
 
 ### Prepare 
 Compile for Linux
