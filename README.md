@@ -5,7 +5,7 @@ A mirror for tinyhttpd(Tinyhttpd非官方镜像,Fork自[sourceForge](https://sou
 * check [phenix3443: TinyHTTPd 源码分析](https://phenix3443.github.io/notebook/c/tinyhttpd-analysis.html)
 * To test, follow `Prepare` to edit httpd.c so as to `make all`.
 * Then goto folder: `htdocs`, change permission of cgi files: `chmod +x *.cgi`, `chmod 600 *.html`.
-* we need 2 pipees, cgi_input streams from parent to child, cgi_output streams from child to parent. * ![](images/qiyeboy.png)
+* we need 2 pipees, cgi_input streams from parent to child, cgi_output streams from child to parent. * ![](images/qiyeboy.png), or from phenix3443 ![](images/fork-pipe.png)
 * screenshots:
   * ![](images/httpd-1.png)
   * ![](images/httpd-2.png)
