@@ -202,12 +202,14 @@ void accept_request(void *arg)
             (st.st_mode & S_IXGRP) ||
             (st.st_mode & S_IXOTH))
             cgi = 1;
-        if (!cgi) {
+        if (!cgi)
+        {
             //接读取文件返回给请求的http客户端
             serve_file(client, path);
             printf("not cgi, serve_file: %s\n", path);
         }
-        else {
+        else
+        {
             //执行cgi文件
             execute_cgi(client, path, method, query_string);
             printf("execute_cgi: path [%s], method [%s], query_string [%s]\n", path, method, query_string);
@@ -653,8 +655,8 @@ int main(void)
     pthread_t newthread;
 
     server_sock = startup(&port);
-	 printf("http server_sock is %d\n", server_sock);
-	 printf("http running on port %d\n", port);
+    printf("http server_sock is %d\n", server_sock);
+    printf("http running on port %d\n", port);
 
     for (;;)
     {
@@ -667,7 +669,7 @@ int main(void)
                              &client_name_len);
         if (client_sock == -1)
             error_die("accept");
-        printf("New connection....  ip: %s , port: %d\n",inet_ntoa(client_name.sin_addr),ntohs(client_name.sin_port));
+        printf("New connection....  ip: %s , port: %d, client_socket: %d\n", inet_ntoa(client_name.sin_addr), ntohs(client_name.sin_port), client_sock);
 
         /* accept_request(client_sock); */
 

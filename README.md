@@ -14,22 +14,24 @@ A mirror for tinyhttpd(Tinyhttpd非官方镜像,Fork自[sourceForge](https://sou
 
 * logs
 ```
-# fxrc @ popos in ~/SourceCode/Tinyhttpd on git:main x [17:20:54]
+# fxrc @ popos in ~/SourceCode/Tinyhttpd on git:main x [17:50:51]
 $ ./httpd
 http server_sock is 3
 http running on port 4000
-New connection....  ip: 127.0.0.1 , port: 55716
+New connection....  ip: 127.0.0.1 , port: 56400, client_socket: 4
+not cgi, serve_file: htdocs/register.html
+New connection....  ip: 127.0.0.1 , port: 56404, client_socket: 5
+not cgi, serve_file: htdocs/register.html
+New connection....  ip: 127.0.0.1 , port: 56408, client_socket: 4
+not cgi, serve_file: htdocs/register.html
+New connection....  ip: 127.0.0.1 , port: 56412, client_socket: 5
 not cgi, serve_file: htdocs/index.html
-New connection....  ip: 127.0.0.1 , port: 55722
-not cgi, serve_file: htdocs/register.html
-New connection....  ip: 127.0.0.1 , port: 55732
-not cgi, serve_file: htdocs/register.html
-New connection....  ip: 127.0.0.1 , port: 55742
+New connection....  ip: 127.0.0.1 , port: 56424, client_socket: 4
 execute_cgi: path [htdocs/register.cgi], method [POST], query_string [(null)]
-New connection....  ip: 127.0.0.1 , port: 55754
+New connection....  ip: 127.0.0.1 , port: 56432, client_socket: 5
 execute_cgi: path [htdocs/register.cgi], method [POST], query_string [(null)]
-New connection....  ip: 127.0.0.1 , port: 55758
-not cgi, serve_file: htdocs/register.html
+New connection....  ip: 127.0.0.1 , port: 56436, client_socket: 4
+execute_cgi: path [htdocs/register.cgi], method [POST], query_string [(null)]
 ```
 
 * ref
